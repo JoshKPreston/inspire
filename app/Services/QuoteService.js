@@ -7,7 +7,7 @@ import { api } from "./AxiosService.js";
 class QuoteService {
   async getQuote() {
     let res = await api.get('quotes')
-    ProxyState.quote = res.data.quote
+    ProxyState.quote = new Quote(res.data)
   } 
   
 }

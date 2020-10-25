@@ -16,7 +16,9 @@ body {
   display: none;
 }
 
-span, p, div, h4, h6 {
+span, p, div, h4, h6,
+input[type=checkbox],
+label {
   cursor: pointer;
 }
 
@@ -32,8 +34,8 @@ span, p, div, h4, h6 {
 
 .clockbox {
   position: absolute;
-  top: 37vh;
-  left: 37vw;
+  top: 35vh;
+  left: 40vw;
   font-size: 4.5em;
 }
 
@@ -183,7 +185,22 @@ span, p, div, h4, h6 {
   text-align: center;
 }
 
-.chbx {
+input[type=checkbox] {
+  opacity: 0;
+  position: absolute;
+}
+
+.chbx-span {
+  height: 2vh;
+  width: 1vw;
+  background: transparent;
+  border: 1px solid gold;
+  display: block;
+  position: relative;
+  top: 1vh;
+}
+
+.chbx-label input[type=checkbox]:checked ~ .chbx-span {
   background-color: gold;
 }
 

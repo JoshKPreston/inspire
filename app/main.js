@@ -2,7 +2,6 @@ import TodoController from "./Controllers/TodoController.js";
 import WeatherController from "./Controllers/WeatherController.js";
 import QuoteController from "./Controllers/QuoteController.js";
 import ImageController from "./Controllers/ImageController.js";
-import Swal from "./sweetalert2.all.min.js"
 
 //TODO Dont forget to register all your controllers	
 class App {
@@ -59,5 +58,3 @@ class App {
 
 
 window["app"] = new App();
-
-window["swal"] = new Swal

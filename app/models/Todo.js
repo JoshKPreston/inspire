@@ -10,8 +10,11 @@ export default class Todo {
 
       <li id="${this.id}" class="todo-list-item">
         <div>
-          <input onchange="app.todoController.toggleTodoStatus('${this.id}')" type="checkbox" 
-            class="chbx" id="chbx_${this.id}" ${this.completed ? 'checked' : ''}>
+          <label class="chbx-label">
+            <input onchange="app.todoController.toggleTodoStatus('${this.id}')" type="checkbox" 
+              class="chbx" id="chbx_${this.id}" ${this.completed ? 'checked' : ''}>
+            <span class="chbx-span"></span>
+          </label>
         </div>
         <!--  <div><span id="todoDesc_${this.id}" onclick="app.todoController.modifyTodo('${this.id}')">${this.description}</span></div> -->
        <div><span id="todoDesc_${this.id}">${this.description}</span></div>
