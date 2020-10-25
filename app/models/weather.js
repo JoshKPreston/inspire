@@ -6,7 +6,7 @@ export default class Weather {
     this.datetime = new Date()
     this.iconURL = data.weather[0].icon
     this.city = data.name
-    this.degF = (((data.main.temp - 273.15) * 9 / 5) + 32).toFixed(2)
+    this.temp = data.main.temp
     this.wSpeed = data.wind.speed
     // subtracting 45 degrees to compensate for the icon that starts 45 degrees clockwise from 0 degrees
     this.wDir = data.wind.deg
@@ -109,8 +109,8 @@ export default class Weather {
       </div>
       <div class="weather-section">
           <div id="weatherCity">${this.city}</div>
-          <div id="weatherDegF">${this.degF} &#8457;</div>
-          <div>Wind: <span id="weatherWSpeed">${this.wSpeed}</span>m/s</div>
+          <div id="weatherTemp">${(((this.temp - 273.15) * 9 / 5) + 32).toFixed(2)} &#8457;</div>
+          <div><span>Wind: </span><span id="weatherWSpeed">${this.wSpeed}</span><span>m/s</span></div>
           <div id="weatherWDir">${this.windDirectionStr}</div>
       </div>
       <div class="weather-section">

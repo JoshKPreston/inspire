@@ -17,10 +17,8 @@ export default class Todo {
           </label>
         </div>
         <!--  <div><span id="todoDesc_${this.id}" onclick="app.todoController.modifyTodo('${this.id}')">${this.description}</span></div> -->
-       <div><span id="todoDesc_${this.id}">${this.description}</span></div>
-        <div>
-          <span onclick="app.todoController.removeTodo('${this.id}')">&times;</span>
-        </div>
+        <div onclick="app.todoController.toggleTodoStatus('${this.id}')"><span id="todoDesc_${this.id}">${this.description}</span></div>
+        <div><span onclick="app.todoController.removeTodo('${this.id}')">&times;</span></div>
       </li>
     
     `;
