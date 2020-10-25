@@ -18,6 +18,16 @@ export default class TodoController {
     todoService.getTodos();
   }
 
+  
+  // modifyTodo(todoId) {
+  //   try {
+  //     todoService.modifyTodo(todoId)
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+
+
   getTodos() {
     try {
       todoService.getTodos()
@@ -64,14 +74,6 @@ export default class TodoController {
     }
   }
 
-
-  // modifyTodo(todoId) {
-  //   try {
-  //     todoService.modifyTodo(todoId)
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
 
 
 }
