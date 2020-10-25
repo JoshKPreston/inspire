@@ -6,31 +6,35 @@ import { api } from "../Services/AxiosService.js";
 let url = 'josh/todos/'
 
 class TodoService {
+  // async modifyTodo(id) {
+  //   let todo = await ProxyState.todos.find(t => t.id == id)
+
+  //   let res = api.put(url, todo)
+  // }
 
   async getTodos() {
     let res = await api.get(url);
+    console.log(res.data.data);
     ProxyState.todos = res.data.data.map(rawData => new Todo(rawData))
   }
 
   async addTodo(todo) {
     let res = await api.post(url, todo);
-    this.getTodos()
+    ProxyState.todos = [...ProxyState.todos, todo]
   }
 
   async toggleTodoStatus(id) {
-    let todo = await ProxyState.todos.find(t=> t.id == id);
+    let todo = await ProxyState.todos.find(t => t.id == id);
     (todo.completed) ? todo.completed = false : todo.completed = true
     let res = await api.put(url+id, todo);
-
-    this.getTodos()
+    let index = await ProxyState.todos.findIndex(t => t.id == id)
+    ProxyState.todos[index] = todo
+    ProxyState.todos = ProxyState.todos
   }
 
   async removeTodo(id) {
     let res = await api.delete(url+id);
-    // @ts-ignore
-    let todos = await ProxyState.todos.find(t=> t.id != id)
-    // ProxyState.todos.concat(todos)
-    ProxyState.todos = [...ProxyState.todos, todos]
+    ProxyState.todos = ProxyState.todos.filter(t=> t.id != id)
   }
 
   constructor() {

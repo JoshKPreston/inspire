@@ -1,13 +1,14 @@
 import { ProxyState } from "../AppState.js";
 import { todoService } from "../Services/TodoService.js";
 
-//TODO Create the draw function
 function _drawTodos() { 
 
   let template = ''
   ProxyState.todos.forEach(t => {template += t.Template})
   document.getElementById('todoList').innerHTML = template
-  document.getElementById('taskCount').innerText = ProxyState.todos.length.toString()
+  let taskCount = ProxyState.todos.filter(t => t.completed != true)
+  document.getElementById('taskCount').innerText = taskCount.length.toString()
+
 }
 
 
@@ -62,4 +63,15 @@ export default class TodoController {
       console.error(error)
     }
   }
+
+
+  // modifyTodo(todoId) {
+  //   try {
+  //     todoService.modifyTodo(todoId)
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+
+
 }
