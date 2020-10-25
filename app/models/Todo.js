@@ -1,5 +1,24 @@
 export default class Todo {
-  constructor({ id }) {
-    this.id = id;
+  constructor(data) {
+    this.id = data._id;
+    this.description = data.description
+    this.completed = data.completed
+  }
+
+  get Template() {
+    return /*html*/ `
+
+      <li id="${this.id}" class="todo-list-item">
+        <div>
+          <input onchange="app.todoController.toggleTodoStatus('${this.id}')" type="checkbox" 
+            class="chbx" id="chbx_${this.id}" ${this.completed ? 'checked' : ''}>
+        </div>
+        <div><span>${this.description}</span></div>
+        <div>
+          <span onclick="app.todoController.removeTodo('${this.id}')">&times;</span>
+        </div>
+      </li>
+    
+    `;
   }
 }

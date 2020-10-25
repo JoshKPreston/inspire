@@ -1,0 +1,191 @@
+*{
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+body {
+  height: 100vh;
+  background-size: cover;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
+}
+
+span, p, div, h4, h6 {
+  cursor: pointer;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  background: rgba(0,0,0,0.3);
+}
+
+.clockbox {
+  position: absolute;
+  top: 37vh;
+  left: 37vw;
+  font-size: 4.5em;
+}
+
+.weather {
+  width: 40vw;
+  position: absolute;
+  top: 2vh;
+  right: -10vw;
+  text-align: center;
+/*   background: rgba(0,0,0,0.5); */
+  border-radius: 20px;
+  font-size: 1.1em;
+  display: flex;
+  justify-content: center;
+}
+
+.weather-section {
+  margin: 0.5vw;
+}
+
+.weather-icon {
+  min-height: 50px;
+}
+
+.weather-icon img {
+  height: 70px;
+}
+
+.compass {
+  position: relative;
+  top: 6vh;
+  right: 0;
+  height: 100px;
+  width: 100px;
+}
+
+.fa-location-arrow {
+  position: absolute;
+  bottom: 7.5vh;
+  right: 1.4vw;
+  font-size: 3.5em;
+}
+
+.n-s {
+  outline: 1px solid #fff;
+  transform: rotate(90deg);
+}
+
+.e-w {
+  outline: 1px solid #fff;
+}
+
+.ne-sw {
+  outline: 1px solid #fff;
+  transform: rotate(-45deg);
+}
+
+.se-nw {
+  outline: 1px solid #fff;
+  transform: rotate(45deg);
+}
+
+.quotes {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 50vw;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 10vh;
+}
+
+.quote-body {
+  padding: 20px;
+}
+
+.quote-body:hover {
+  margin-bottom: -1.45vh;
+}
+.quote-body:before{
+  content: "\201C";
+}
+
+.quote-body:after {
+  content: "\201D";
+}
+
+.quote-author {
+  border-top: 1px solid #fff;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.todo {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  flex-flow: column;
+}
+
+.todo-form {
+  display: flex;
+  border-top: 1px solid #49c3f2
+}
+
+.todo-form>input {
+  background: none;
+  border: none;
+  text-align: center;
+  color: #fff;
+  padding: 1vh;
+}
+
+.new-todo-desc:focus {
+  outline: none;
+}
+
+.new-todo-btn {
+  flex: 1;
+}
+
+.todo-list {
+  flex: 1;
+  list-style: none;
+  display: flex;
+  flex-flow: column;
+  padding: 0;
+}
+
+.todo-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid gold;
+  padding: 1vh;
+}
+
+.task-counter, 
+.greeting {
+  text-align: center;
+}
+
+.chbx {
+  background-color: gold;
+}
+
+.fa-chevron-right {
+  position: absolute;
+  bottom: 2vh;
+  left: 49vw;
+  font-size: 3em;
+}

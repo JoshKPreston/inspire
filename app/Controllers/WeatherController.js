@@ -5,21 +5,19 @@ import weatherService from "../Services/WeatherService.js";
 //		you may wish to check out the model and include some additional data.
 
 //TODO Complete rendering data to the screen
-function drawWeather() {
-  console.log("THE WEATHER MAN SAYS:", ProxyState.weather);
+function _drawWeather() {
+  
+  document.getElementById('weather').innerHTML = ProxyState.weather.Template
+  // spin the arrow
+  document.getElementById('arrow').style.transform = `rotate(${ProxyState.weather.wDir-45}deg)`
+
 }
 export default class WeatherController {
   constructor() {
-    ProxyState.on("weather", drawWeather);
+    ProxyState.on("weather", _drawWeather);
     this.getWeather()
+    setInterval(this.getWeather, 60000)
   }
 
-  getWeather() {
-    try {
-      weatherService.getWeather()
-    }
-    catch (e) {
-      console.error(e)
-    }
-  }
+  getWeather() { try { weatherService.getWeather() } catch (e) { console.error(e) } }
 }
