@@ -1,6 +1,6 @@
 
 
-export default class weather {
+export default class Weather {
   constructor(data) {
     // console.log('[RAW WEATHER API DATA]', data);
     this.datetime = new Date()
