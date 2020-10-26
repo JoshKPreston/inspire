@@ -1,5 +1,5 @@
 import Todo from "./Models/Todo.js"
-import Weather from "./Models/Weather.js"
+import weather from "./Models/Weather.js"
 import Image from "./models/Image.js"
 import Quote from "./models/Quote.js"
 import { EventEmitter } from "./Utils/EventEmitter.js"
@@ -9,7 +9,7 @@ import { isValidProp } from "./Utils/isValidProp.js"
 class AppState extends EventEmitter {
   /** @type {Todo[]} */
   todos = []
-  /** @type {Weather} */
+  /** @type {weather} */
   weather = null
   
   /** @type {Image} */
