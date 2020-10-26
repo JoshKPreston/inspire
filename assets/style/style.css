@@ -39,6 +39,44 @@ label {
   font-size: 4.5em;
 }
 
+.clock-btn-box {
+  height: 5vh;
+  width: 23vw;
+  position: absolute;
+  top: 30vh;
+  left: 38.1vw;
+  display: flex;
+}
+
+.standard-clock-btn {
+  flex: 1;
+  border-bottom: 1px solid #fff;
+  opacity: 0.5;
+}
+
+.standard-clock-btn:hover {
+  opacity: 1;
+}
+
+.military-clock-btn {
+  flex: 1;
+  border-bottom: 1px solid #fff;
+  opacity: 0.5;
+}
+
+.military-clock-btn:hover {
+  opacity: 1;
+}
+
+
+.standard-clockbox {
+/*   border: 1px solid #fff; */
+}
+
+.military-clockbox {
+/*   border: 1px solid chartreuse; */
+}
+
 .weather {
   width: 40vw;
   position: absolute;
@@ -132,6 +170,7 @@ label {
   margin: 0 auto;
 }
 
+.todo-outer,
 .todo {
   position: absolute;
   bottom: 0;
@@ -180,6 +219,14 @@ label {
 
 .todo-list-item:hover {
   background: #ffd7004a;
+}
+
+.collapse-todo {
+  z-index: 1;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  width: 13.4vw;
 }
 
 .task-counter, 

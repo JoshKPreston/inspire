@@ -3,33 +3,42 @@ import WeatherController from "./Controllers/WeatherController.js";
 import QuoteController from "./Controllers/QuoteController.js";
 import ImageController from "./Controllers/ImageController.js";
 
-//TODO Dont forget to register all your controllers	
+
+class Clock {
+
+  constructor(isStandard) {
+    this.clock = this.getTime(isStandard)
+  }
+    getTime(isStandard) {
+      this.date = new Date();
+      this.hour = this.date.getHours();
+      this.min = this.date.getMinutes();
+      this.sec = this.date.getSeconds();
+      
+      // allow hour to show double digit even if real time hour is single digit
+      this.updateTime = (num) => (num < 10) ? "0" + num : num
+      this.hour = this.updateTime(this.hour);
+      this.min = this.updateTime(this.min);
+      this.sec = this.updateTime(this.sec);
+
+      // grab meridiem before converting hour to standard time and set greeting accordingly
+      this.meridiem = (this.hour >= 12) ? "PM" : "AM"
+      this.greeting = (this.hour >= 12) ? 'Good Afternoon!' : ((this.hour >= 17) ? 'Good Evening ^_^' : 'Good Morning!')
+      
+      isStandard ? this.standard = true : this.standard = false
+      this.standard
+        ? this.hour = (this.hour == 0) ? 12 : ((this.hour > 12) ? (this.hour - 12): this.hour)
+        : document.getElementById('militaryClock').innerText = `${this.hour}:${this.min}:${this.sec} ${this.meridiem}`
+      document.getElementById('standardClock').innerText = `${this.hour}:${this.min}:${this.sec} ${this.meridiem}`
+      document.getElementById('greeting').innerText = this.greeting
+    }
+
+  }
+
+
 class App {
   
-  
-  clock() {
-      let date = new Date();
-      let hour = date.getHours();
-      let min = date.getMinutes();
-      let sec = date.getSeconds();
-      
-      let updateTime = (num) => (num < 10) ? "0" + num : num
-      hour = updateTime(hour);
-      min = updateTime(min);
-      sec = updateTime(sec);
-      
-      // grab meridiem before converting hour to standard time
-      let meridiem = (hour >= 12) ? "PM" : "AM"
-      let greeting = (hour >= 12) ? 'Good Afternoon!' : ((hour >= 17) ? 'Good Evening ^_^' : 'Good Morning!')
-      
-      // convert hour to standard time if more than 13 or 0 midnight to 12am
-      hour = (hour == 0) ? 12 : ((hour > 12) ? (hour - 12): hour);
-
-
-      document.getElementById('clock').innerText = `${hour}:${min}:${sec} ${meridiem}`
-      document.getElementById('greeting').innerText = greeting
-    }
-    
+   
 
     showElement(id) {
       let elem = document.getElementById(id)
@@ -46,15 +55,19 @@ class App {
       this.quoteController.getQuote()
     }
 
+    standardClock = new Clock(true)
+    militaryClock = new Clock(false)
+
   constructor() {
     this.weatherController = new WeatherController();
     this.quoteController = new QuoteController();
     this.imageController = new ImageController();
     this.todoController = new TodoController();
-    setInterval(this.clock, 1000)
+    setInterval(this.standardClock.getTime, 1000)
+    setInterval(this.militaryClock.getTime, 1000)
   }
 
 }
 
-
 window["app"] = new App();
+
