@@ -1,5 +1,5 @@
 import { ProxyState } from "../AppState.js";
-import Quote from "../models/Quote.js";
+import Quote from "../Models/Quote.js";
 import { api } from "./AxiosService.js";
 // api 'quotes'
 

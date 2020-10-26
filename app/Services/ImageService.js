@@ -1,5 +1,5 @@
 import { ProxyState } from "../AppState.js";
-import Image from "../models/Image.js";
+import Image from "../Models/Image.js";
 import { api } from "./AxiosService.js";
 // api 'images'
 

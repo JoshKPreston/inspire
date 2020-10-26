@@ -1,5 +1,5 @@
 import { ProxyState } from "../AppState.js"
-import Todo from "../models/Todo.js"
+import Todo from "../Models/Todo.js"
 import { api } from "../Services/AxiosService.js";
 
 let url = 'josh/todos/'
