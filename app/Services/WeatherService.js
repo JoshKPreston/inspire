@@ -11,7 +11,7 @@ class WeatherService {
 
   async getWeather() {
     let res = await api.get('weather');
-    ProxyState.weather = new Weather(res.data);
+    ProxyState.weather = new weather(res.data);
   }
 
   constructor() {
