@@ -22,8 +22,8 @@ export default class WeatherController {
   getWeather() { try { weatherService.getWeather() } catch (e) { console.error(e) } }
 
 
-  changeTempUnit() {
-    document.getElementById('weatherDegF')
+  convertTemp() {
+    weatherService.converTemp()
   }
 
 }

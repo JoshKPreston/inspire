@@ -6,7 +6,9 @@ export default class Weather {
     this.datetime = new Date()
     this.iconURL = data.weather[0].icon
     this.city = data.name
-    this.temp = data.main.temp
+    this.tempK = (data.main.temp).toFixed(2)
+    this.tempF = (((data.main.temp - 273.15) * 9 / 5) + 32).toFixed(2)
+    this.tempC = (data.main.temp - 273.15).toFixed(2)
     this.wSpeed = data.wind.speed
     // subtracting 45 degrees to compensate for the icon that starts 45 degrees clockwise from 0 degrees
     this.wDir = data.wind.deg
@@ -100,6 +102,32 @@ export default class Weather {
         break
     }
 
+    this.currentTemp = this.convertTemp(this.tempK)
+  }
+
+  convertTemp(currentTemp) {
+    let newTemp = null
+    let newTempLabel = null
+    currentTemp == this.tempK 
+      ? (newTemp = this.tempF) && (newTempLabel = '&#8457;')
+      : (currentTemp == this.tempF 
+        ? (newTemp = this.tempC) && (newTempLabel = '&#8451;')
+        : (currentTemp == this.tempC 
+          ? (newTemp = this.tempK) && (newTempLabel = '&#8490;')
+          : (newTemp = this.tempF) && (newTempLabel = '&#8457;')))
+          
+    return {
+      temp: newTemp,
+      label: newTempLabel
+    }
+          
+    // currentTemp == }this.tempK 
+    // ? `${this.tempF}&#8457;` 
+    // : (currentTemp == this.tempF 
+    //   ? `${this.tempC}&#8451;` 
+    //   : (currentTemp == this.tempC 
+    //     ? `${this.tempK}&#8490;` 
+    //     : `${this.tempF}&#8457;`))
   }
 
   get Template() {
@@ -108,10 +136,10 @@ export default class Weather {
         <img src="https://openweathermap.org/img/w/${this.iconURL}.png" alt="" id="weatherIcon">
       </div>
       <div class="weather-section">
-          <div id="weatherCity">${this.city}</div>
-          <div id="weatherTemp">${(((this.temp - 273.15) * 9 / 5) + 32).toFixed(2)} &#8457;</div>
+          <div id="weatherCity"><span>${this.city}</span></div>
+          <div><span id="weatherTemp" onclick="app.weatherController.convertTemp('${this.currentTemp.temp}')">${this.currentTemp.temp+this.currentTemp.label}</span></div>
           <div><span>Wind: </span><span id="weatherWSpeed">${this.wSpeed}</span><span>m/s</span></div>
-          <div id="weatherWDir">${this.windDirectionStr}</div>
+          <div id="weatherWDir"><span>${this.windDirectionStr}</span></div>
       </div>
       <div class="weather-section">
         <div class="compass">

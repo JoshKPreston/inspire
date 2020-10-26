@@ -4,6 +4,10 @@ import { api } from "./AxiosService.js";
 // api 'weather'
 
 class WeatherService {
+  converTemp() {
+    ProxyState.weather.currentTemp = ProxyState.weather.convertTemp(ProxyState.weather.currentTemp.temp)
+    ProxyState.weather = ProxyState.weather
+  }
 
   async getWeather() {
     let res = await api.get('weather');
